@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 const mongo_client = require('mongodb').MongoClient;
 var db;
-var db_link = 'mongodb://localhost:27017/blog'
-mongo_client.connect(, function (err, database) {
+var db_link = 'mongodb://localhost:27017/blog';
+
+mongo_client.connect(db_link, function (err, database) {
   if (err) throw err
   db = database;
 })
