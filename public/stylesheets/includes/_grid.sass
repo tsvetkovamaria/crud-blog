@@ -1,0 +1,38 @@
+$sizeNames: 'xs','sm','md','lg'
+$sizeBreakPoins: 300px, 500px, 900px, 1200px
+$gutter: 15px
+
+.container 
+	@extend %clearfix
+	padding-right: $gutter
+	padding-left: $gutter
+	max-width: 90%
+
+@for $i from 0 to length($sizeBreakPoins) 
+	$breakpoint: #{nth($sizeBreakPoins, $i+1)}
+	@media screen and (min-width: $breakpoint)
+		.container
+			max-width: calc(#{$breakpoint}-30px)
+	
+.row
+	@extend %clearfix
+	margin-right: -$gutter
+	margin-left: -$gutter
+	
+%col
+	float: left
+	box-sizing: border-box
+	padding: 0 $gutter
+
+[class^='col'],
+.col
+	@extend %col
+
+@for $i from 0 to length($sizeNames) 
+	$breakpoint: #{nth($sizeBreakPoins, $i+1)}
+	@media screen and (min-width: $breakpoint)
+		@for $n from 1 through 12
+			.col-#{nth($sizeNames, $i+1)}-#{$n}
+				width: 100% / (12/$n)
+
+

@@ -1,0 +1,69 @@
+%btn
+	display: inline-block
+	position: relative
+	padding: 10px 10px
+	color: #fff
+	font:
+		size: 15px
+		family: 'Fjalla One'
+		weight: normal
+	text:
+		transform: uppercase
+		decoration: none
+		align: center
+	margin-bottom: 10px
+
+%clearfix
+	&::after
+		content: ""
+		display: table
+		width: 100%
+		clear: both
+
+=size($size)
+	width: $size
+	height: $size
+
+=btn($bgcolor)
+	@extend %btn
+	background: $bgcolor
+	+triangle($bgcolor)
+
+%triangle
+	content: ''
+	position: absolute
+	bottom: -10px
+	left: 50%
+	margin-left: -10px
+	width: 0
+	height: 0
+	border:
+		style: solid
+		width: 10px 10px 0 10px
+
+=triangle($color)
+	&::after
+		@extend %triangle
+		border-color: $color transparent transparent transparent
+
+
+$tablet-up: ' screen and (min-width: 500px)'
+$desctop-up: ' screen and (min-width: 900px)'
+
+=tablet
+	@media #{$tablet-up}
+		@content
+=desctop
+	@media #{$desctop-up}
+		@content
+
+=placeholder
+	&::-webkit-input-placeholder 
+		@content
+	&::-moz-placeholder 
+		@content
+	&:-ms-input-placeholder
+		@content
+	&:-moz-placeholder 
+		@content
+

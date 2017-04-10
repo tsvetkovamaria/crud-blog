@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Add new Article to blog
+  form(action="/blog", method="POST")
+    p: input(type="text", name="author", placeholder="author")
+    p: input(type="text", name="title", placeholder="title")
+    p: textarea(name="body", placeholder="Type your article here..." cols="30", rows="10")
+    p: button(type="submit") Add

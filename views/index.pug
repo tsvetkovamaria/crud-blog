@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  mixin article-card(article)
+    .box.col.col-md-3.col-sm-4.col-xs-12
+      h4= article.title
+      b= article.author
+      p= article.body
+
+  h1= title
+  p Welcome to #{title}
+  
+  .row
+    each article in articles
+      +article-card(article)
